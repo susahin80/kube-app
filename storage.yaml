@@ -17,5 +17,6 @@ kind: StorageClass
 metadata:
     name: cloud-ssd
 provisioner: kubernetes.io/aws-ebs
+volumeBindingMode: WaitForFirstConsumer
 parameters:
     type: gp2
