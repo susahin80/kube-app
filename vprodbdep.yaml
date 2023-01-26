@@ -21,7 +21,7 @@ spec:
                       - '--ignore-db-dir=lost+found'
                   volumeMounts:
                       - mountPath: /var/lib/mysql
-                        name: vpro-db-data
+                        name: mongo-persistent-storage
                   ports:
                       - name: vprodb-port
                         containerPort: 3306
@@ -31,11 +31,10 @@ spec:
                             secretKeyRef:
                                 name: app-secret
                                 key: db-pass
-            nodeSelector:
-                zone: eu-central-1b
+            # nodeSelector:
+            #     zone: eu-central-1b
             volumes:
-                - name: vpro-db-data
-                  # This AWS EBS volume must already exist.
-                  awsElasticBlockStore:
-                      volumeID: vol-003e696358dec9ff3
-                      fsType: ext4
+                - name: mongo-persistent-storage
+                  # pointer to the configuration of HOW we want the mount to be implemented
+                  persistentVolumeClaim:
+                      claimName: mongo-pvc
