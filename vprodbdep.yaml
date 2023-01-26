@@ -31,8 +31,8 @@ spec:
                             secretKeyRef:
                                 name: app-secret
                                 key: db-pass
-            # nodeSelector:
-            #   zone: us-east-2b
+            nodeSelector:
+                zone: us-cental-1b
             volumes:
                 - name: vpro-db-data
                   # This AWS EBS volume must already exist.
