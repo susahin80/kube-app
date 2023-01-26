@@ -37,4 +37,4 @@ spec:
                 - name: persistent-storage
                   # pointer to the configuration of HOW we want the mount to be implemented
                   persistentVolumeClaim:
-                      claimName: my-vpc
+                      claimName: my-pvc
