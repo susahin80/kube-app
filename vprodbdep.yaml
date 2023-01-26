@@ -21,7 +21,7 @@ spec:
                       - '--ignore-db-dir=lost+found'
                   volumeMounts:
                       - mountPath: /var/lib/mysql
-                        name: mongo-persistent-storage
+                        name: persistent-storage
                   ports:
                       - name: vprodb-port
                         containerPort: 3306
@@ -34,7 +34,7 @@ spec:
             # nodeSelector:
             #     zone: eu-central-1b
             volumes:
-                - name: mongo-persistent-storage
+                - name: persistent-storage
                   # pointer to the configuration of HOW we want the mount to be implemented
                   persistentVolumeClaim:
-                      claimName: mongo-pvc
+                      claimName: ebs-mysql-pv-claim
